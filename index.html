@@ -468,7 +468,7 @@
 
     /* ─── MOBILE STICKY BAR ─── */
     .sticky-bar {
-      display: none;
+      display: block;
       position: fixed;
       bottom: 0;
       left: 0;
@@ -498,24 +498,137 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
+      gap: .5rem;
+      padding: .85rem 1.25rem;
+      border-radius: 2rem;
       border: 1px solid var(--border);
       background: transparent;
       color: var(--primary);
       cursor: pointer;
       transition: border-color .2s;
       flex-shrink: 0;
+      font-family: var(--font-body);
+      font-size: .9rem;
+      font-weight: 500;
     }
     .sticky-bar .btn-call:hover { border-color: var(--primary); }
-    .sticky-bar .btn-call svg { width: 20px; height: 20px; }
+    .sticky-bar .btn-call svg { width: 18px; height: 18px; }
+    .sticky-bar .btn-call .call-text { display: inline; }
 
     @media (max-width: 768px) {
-      .sticky-bar { display: block; }
-      /* Add bottom padding so footer isn't hidden behind sticky bar */
-      footer { padding-bottom: 5rem; }
+      .sticky-bar .btn-call .call-text { display: none; }
+      .sticky-bar .btn-call {
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border-radius: 50%;
+        justify-content: center;
+      }
     }
+
+    /* Add bottom padding so footer isn't hidden behind sticky bar */
+    footer { padding-bottom: 5rem; }
+
+    /* ─── PROMO BANNER ─── */
+    .promo-banner {
+      background: var(--primary);
+      color: var(--primary-fg);
+      text-align: center;
+      padding: .6rem 1.5rem;
+      font-size: .9rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      position: relative;
+      z-index: 100;
+    }
+    .promo-banner a { color: var(--primary-fg); text-decoration: underline; }
+    .promo-banner .promo-close {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--primary-fg);
+      cursor: pointer;
+      font-size: 1.2rem;
+      line-height: 1;
+      opacity: .7;
+    }
+    .promo-banner .promo-close:hover { opacity: 1; }
+
+    /* ─── INSTAGRAM FEED ─── */
+    .ig-section { text-align: center; }
+    .ig-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 640px) {
+      .ig-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .ig-grid a {
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+    .ig-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .3s ease, opacity .3s ease;
+    }
+    .ig-grid a:hover img { transform: scale(1.05); opacity: .85; }
+    .ig-placeholder {
+      background: rgba(138,133,120,.08);
+      border: 1px dashed var(--border);
+      padding: 3rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+    .ig-placeholder code {
+      display: block;
+      margin-top: .5rem;
+      font-size: .8rem;
+      color: var(--primary);
+    }
+
+    /* ─── REVIEW CTA ─── */
+    .review-cta {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(200,165,90,.06);
+      border: 1px solid rgba(200,165,90,.15);
+    }
+    .review-cta-stars { display: flex; gap: .25rem; color: var(--primary); }
+    .review-cta-stars svg { width: 24px; height: 24px; fill: var(--primary); }
+    .review-cta p {
+      color: var(--muted);
+      font-size: .95rem;
+      text-align: center;
+    }
+    .btn-review {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+      padding: .75rem 1.5rem;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      letter-spacing: .1em;
+      cursor: pointer;
+      transition: background .2s, color .2s;
+    }
+    .btn-review:hover { background: var(--primary); color: var(--primary-fg); }
+    .btn-review svg { width: 18px; height: 18px; }
 
     /* ─── ANIMATIONS ─── */
     .fade-up {
@@ -530,6 +643,12 @@
   </style>
 </head>
 <body>
+
+  <!-- ═══════ PROMO BANNER (edit text here to update promos) ═══════ -->
+  <div class="promo-banner" id="promoBanner">
+    🔥 Summer Special — $5 off all fades through the end of the month!
+    <button class="promo-close" id="promoClose" aria-label="Close banner">×</button>
+  </div>
 
   <!-- ═══════ HERO ═══════ -->
   <section class="hero">
@@ -624,7 +743,7 @@
           <address class="address">111 Dryden Rd, Suite D<br>Ithaca, NY 14850</address>
           <a href="tel:+16073796028" class="call-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Tap to Call
+            Tap to Call · (607) 379-6028
           </a>
           <div class="walkins">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
@@ -653,6 +772,27 @@
     </div>
   </section>
 
+  <!-- ═══════ GOOGLE REVIEW CTA ═══════ -->
+  <section class="section fade-up">
+    <div class="section-inner">
+      <div class="review-cta">
+        <div class="review-cta-stars">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <p>Loved your cut? Help us out — leave a quick review on Google.</p>
+        <!-- REPLACE the href below with Kevin's actual Google Business review link -->
+        <a href="https://search.google.com/local/writereview?placeid=PLACE_ID_HERE" target="_blank" rel="noopener noreferrer" class="btn-review">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          LEAVE A REVIEW
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ═══════ CTA ═══════ -->
   <section class="cta section--card fade-up">
     <h2>READY FOR A FRESH CUT?</h2>
@@ -674,6 +814,7 @@
     <div class="sticky-bar-inner">
       <a href="tel:+16073796028" class="btn-call" aria-label="Call barbershop">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="call-text">(607) 379-6028</span>
       </a>
       <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary book-btn">
         BOOK NOW
@@ -808,6 +949,24 @@
           gtag('event', 'call_click', {
             event_category: 'engagement',
             event_label: 'phone_call',
+            value: 1
+          });
+        }
+      });
+    });
+
+    /* ── Promo Banner Close ── */
+    document.getElementById('promoClose').addEventListener('click', () => {
+      document.getElementById('promoBanner').style.display = 'none';
+    });
+
+    /* ── GA4: Track review link clicks ── */
+    document.querySelectorAll('.btn-review').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'review_click', {
+            event_category: 'engagement',
+            event_label: 'google_review',
             value: 1
           });
         }

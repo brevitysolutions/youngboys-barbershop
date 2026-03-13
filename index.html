@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Young Boys Barbershop · Ithaca, NY</title>
+  <meta name="description" content="Young Boys Barbershop — precision fades, lineups, and designs in Collegetown, Ithaca NY. Walk-ins welcome. Book your appointment today." />
+  <meta name="keywords" content="barbershop, Ithaca, haircut, fade, skin fade, Collegetown, Young Boys Barbershop" />
+  <meta property="og:title" content="Young Boys Barbershop · Ithaca, NY" />
+  <meta property="og:description" content="Precision fades, lineups, and designs. Walk-ins welcome." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/Chairs.webp" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg: #0e0e0e;
+      --bg-card: #151515;
+      --fg: #f0ece4;
+      --muted: #8a8578;
+      --primary: #c8a55a;
+      --primary-fg: #0e0e0e;
+      --border: #2a2723;
+      --font-display: 'Bebas Neue', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--fg);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.3;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(14,14,14,.6), rgba(14,14,14,.3) 50%, var(--bg));
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+      max-width: 48rem;
+    }
+    .hero-tag {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      font-size: .85rem;
+      font-weight: 500;
+    }
+    .hero-tag svg { width: 18px; height: 18px; }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      line-height: .95;
+      letter-spacing: .06em;
+      margin-bottom: 1.25rem;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 28rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    /* ─── BUTTONS ─── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--primary);
+      color: var(--primary-fg);
+      padding: 1rem 2rem;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: .15em;
+      border: none;
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-primary:hover { opacity: .88; }
+    .btn-primary svg { width: 20px; height: 20px; }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      padding: 1rem 1.5rem;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      letter-spacing: .15em;
+      background: transparent;
+      cursor: pointer;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+    .btn-outline svg { width: 20px; height: 20px; }
+
+    /* ─── SECTIONS ─── */
+    .section { padding: 5rem 1.5rem; }
+    .section--card { background: var(--bg-card); }
+    .section-inner { max-width: 56rem; margin: 0 auto; }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      text-align: center;
+      letter-spacing: .08em;
+      margin-bottom: .5rem;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 3rem;
+    }
+
+    /* ─── GALLERY ─── */
+    .gallery { position: relative; }
+    .gallery-track {
+      display: flex;
+      transition: transform .5s ease;
+      overflow: hidden;
+    }
+    .gallery-slide {
+      min-width: 100%;
+      flex-shrink: 0;
+    }
+    .gallery-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    .gallery-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(14,14,14,.7);
+      border: none;
+      color: var(--fg);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background .2s;
+      z-index: 3;
+    }
+    .gallery-btn:hover { background: rgba(14,14,14,.9); }
+    .gallery-btn--prev { left: .75rem; }
+    .gallery-btn--next { right: .75rem; }
+    .gallery-btn svg { width: 24px; height: 24px; }
+    .gallery-dots {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(138,133,120,.3);
+      cursor: pointer;
+      transition: background .2s;
+      padding: 0;
+    }
+    .gallery-dot.active { background: var(--primary); }
+
+    @media (min-width: 640px) {
+      .gallery-slide img { height: 600px; }
+    }
+
+    /* ─── SERVICES ─── */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 640px) {
+      .menu-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .service-card {
+      background: rgba(138,133,120,.08);
+      border: 1px solid var(--border);
+      padding: 1.25rem;
+      transition: border-color .2s;
+    }
+    .service-card:hover { border-color: rgba(200,165,90,.3); }
+    .service-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: .75rem;
+      margin-bottom: .5rem;
+    }
+    .service-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      letter-spacing: .04em;
+      line-height: 1.2;
+    }
+    .service-spanish {
+      font-size: .75rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+    .service-price {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--primary);
+      flex-shrink: 0;
+    }
+    .service-desc {
+      font-size: .875rem;
+      color: var(--muted);
+      margin-bottom: .5rem;
+    }
+    .service-duration {
+      font-size: .75rem;
+      color: rgba(138,133,120,.6);
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+    .service-duration svg { width: 12px; height: 12px; }
+    .menu-cta { text-align: center; margin-top: 2.5rem; }
+
+    /* ─── HOURS & INFO ─── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    @media (min-width: 768px) {
+      .info-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .info-heading {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .info-heading svg { width: 24px; height: 24px; color: var(--primary); }
+    .info-heading h2 {
+      font-family: var(--font-display);
+      font-size: 2.25rem;
+      letter-spacing: .08em;
+    }
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: .75rem;
+      margin-bottom: .75rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hours-day { font-weight: 500; }
+    .hours-time { color: var(--muted); }
+
+    .address {
+      font-style: normal;
+      color: var(--muted);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .walkins {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .walkins svg { width: 16px; height: 16px; color: var(--primary); }
+    .interior-img {
+      width: 100%;
+      height: 12rem;
+      object-fit: cover;
+    }
+    .reviews { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .75rem; }
+    .review {
+      display: flex;
+      align-items: flex-start;
+      gap: .5rem;
+    }
+    .review svg {
+      width: 16px;
+      height: 16px;
+      color: var(--primary);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .review p {
+      font-size: .875rem;
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    /* ─── CTA ─── */
+    .cta { text-align: center; padding: 6rem 1.5rem; }
+    .cta h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      letter-spacing: .06em;
+      margin-bottom: 1.25rem;
+    }
+    .cta p { color: var(--muted); margin-bottom: 2.5rem; max-width: 28rem; margin-left: auto; margin-right: auto; }
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    .cta .btn-primary { padding: 1.25rem 2.5rem; font-size: 1.5rem; }
+    .cta .btn-outline { padding: 1.25rem 2rem; font-size: 1.2rem; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      font-size: .85rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+    }
+    footer a {
+      display: inline-flex;
+      align-items: center;
+      gap: .25rem;
+      transition: color .2s;
+    }
+    footer a:hover { color: var(--primary); }
+    footer svg { width: 16px; height: 16px; }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <img src="images/Chairs.webp" alt="Young Boys Barbershop interior" class="hero-bg" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+        <span>Ithaca, NY</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+      </div>
+      <h1>YOUNG BOYS<br>BARBERSHOP</h1>
+      <p>Where precision meets style. Walk-ins welcome.</p>
+      <div class="hero-buttons">
+        <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          BOOK NOW
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="https://www.instagram.com/youngboys_barbershop_1/" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          FOLLOW US
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ GALLERY ═══════ -->
+  <section class="section fade-up">
+    <div class="section-inner">
+      <h2 class="section-title">OUR WORK</h2>
+      <p class="section-sub">Fades, lineups, designs — see it for yourself</p>
+      <div class="gallery" id="gallery">
+        <div class="gallery-track" id="galleryTrack">
+          <div class="gallery-slide"><img src="images/10.webp" alt="Skin fade showcase" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/1.jpg" alt="Haircut showcase" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/2.jpg" alt="Fade lineup" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/3.jpg" alt="Precision cut" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/4.jpg" alt="Design work" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/5.jpg" alt="Fresh cut" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/6.jpg" alt="Kids cut" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/7.jpg" alt="Taper fade" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/8.jpg" alt="Clean fade" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/9.jpg" alt="Line design" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/13.jpg" alt="Textured cut" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/14.jpg" alt="Wave cut" loading="lazy" /></div>
+        </div>
+        <button class="gallery-btn gallery-btn--prev" id="prevBtn" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="gallery-btn gallery-btn--next" id="nextBtn" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+        <div class="gallery-dots" id="galleryDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SERVICES ═══════ -->
+  <section class="section section--card fade-up">
+    <div class="section-inner">
+      <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:var(--primary)"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h2 class="section-title" style="margin-bottom:0">THE MENU</h2>
+      </div>
+      <p class="section-sub">Every service, every detail — handled</p>
+      <div class="menu-grid" id="menuGrid"></div>
+      <div class="menu-cta">
+        <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          BOOK NOW
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ HOURS & INFO ═══════ -->
+  <section class="section fade-up">
+    <div class="section-inner">
+      <div class="info-grid">
+        <div>
+          <div class="info-heading">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <h2>HOURS</h2>
+          </div>
+          <div id="hoursBlock"></div>
+        </div>
+        <div>
+          <div class="info-heading">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <h2>FIND US</h2>
+          </div>
+          <address class="address">111 Dryden Rd, Suite D<br>Ithaca, NY 14850</address>
+          <div class="walkins">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Walk-ins welcome!</span>
+          </div>
+          <img src="images/Chair_haircut.jpg" alt="Inside Young Boys Barbershop" class="interior-img" />
+          <div class="reviews">
+            <div class="review">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <p>"Love the service and love my haircuts every time!"</p>
+            </div>
+            <div class="review">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              <p>"Definitely worth the wait, the care and attention to detail are really fantastic!"</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA ═══════ -->
+  <section class="cta section--card fade-up">
+    <h2>READY FOR A FRESH CUT?</h2>
+    <p>Pull up or book your spot — your call</p>
+    <div class="cta-buttons">
+      <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary">
+        BOOK NOW
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+      <a href="https://www.instagram.com/youngboys_barbershop_1/" target="_blank" rel="noopener noreferrer" class="btn-outline">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+        @YOUNGBOYS
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer>
+    <span id="footerYear"></span>
+    <a href="https://www.instagram.com/youngboys_barbershop_1/" target="_blank" rel="noopener noreferrer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+      @youngboys_barbershop_1
+    </a>
+  </footer>
+
+  <script>
+    /* ── Data ── */
+    const services = [
+      { name:"Basic Haircut", spanish:"Corte Básico", price:"$30", duration:"25 min", desc:"Basic haircut with minimal shear and trimmer work" },
+      { name:"Skin Fade", spanish:"Degradado desde la piel", price:"$35", duration:"40 min", desc:"Any kind of skin fade — high, medium, low, or tapered" },
+      { name:"Luxury Haircut", spanish:"Corte de Lujo", price:"$60", duration:"1 hr 10 min", desc:"Cut of your choice + 2 add-ons: design, beard trim, hot towel, or eyebrows" },
+      { name:"Kids Haircut", spanish:"Corte de Niños", price:"$25–$30", duration:"30 min", desc:"Basic kids cut $25 · Kids skin fade $30 (10 & under)" },
+      { name:"Beard & Mustache Trim", spanish:"Tallado de bigote y barba", price:"$20", duration:"15 min", desc:"Precision trim with professional-grade razor blade" },
+      { name:"Designs", spanish:"Diseños", price:"Varies", duration:"10 min", desc:"Custom line designs and artistic patterns tailored to your style" },
+      { name:"Eyebrows", spanish:"Cejas", price:"$10", duration:"5 min", desc:"Perfectly shaped eyebrows with straight razor — no wax" },
+      { name:"Hot Towel Treatment", spanish:"Toalla Caliente", price:"$20", duration:"5 min", desc:"Luxurious warmth to melt away tension and leave you refreshed" },
+    ];
+
+    const hours = [
+      { day:"Monday", time:"9:00 AM – 6:00 PM" },
+      { day:"Tuesday", time:"9:00 AM – 6:00 PM" },
+      { day:"Wednesday", time:"9:00 AM – 6:00 PM" },
+      { day:"Thursday", time:"9:00 AM – 6:30 PM" },
+      { day:"Friday", time:"9:00 AM – 7:00 PM" },
+      { day:"Saturday", time:"9:00 AM – 7:00 PM" },
+      { day:"Sunday", time:"10:30 AM – 4:30 PM" },
+    ];
+
+    /* ── Render Services ── */
+    const clockIcon = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+    document.getElementById('menuGrid').innerHTML = services.map(s => `
+      <div class="service-card">
+        <div class="service-top">
+          <div>
+            <div class="service-name">${s.name}</div>
+            <div class="service-spanish">${s.spanish}</div>
+          </div>
+          <span class="service-price">${s.price}</span>
+        </div>
+        <p class="service-desc">${s.desc}</p>
+        <p class="service-duration">${clockIcon} ${s.duration}</p>
+      </div>
+    `).join('');
+
+    /* ── Render Hours ── */
+    document.getElementById('hoursBlock').innerHTML = hours.map(h => `
+      <div class="hours-row">
+        <span class="hours-day">${h.day}</span>
+        <span class="hours-time">${h.time}</span>
+      </div>
+    `).join('');
+
+    /* ── Footer Year ── */
+    document.getElementById('footerYear').textContent = `© ${new Date().getFullYear()} Young Boys Barbershop · Ithaca, NY`;
+
+    /* ── Gallery Carousel ── */
+    const SLIDE_COUNT = 12;
+    let current = 0;
+    const track = document.getElementById('galleryTrack');
+    const dotsEl = document.getElementById('galleryDots');
+
+    for (let i = 0; i < SLIDE_COUNT; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'gallery-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsEl.appendChild(dot);
+    }
+
+    function goTo(i) {
+      current = i;
+      track.style.transform = `translateX(-${current * 100}%)`;
+      dotsEl.querySelectorAll('.gallery-dot').forEach((d, idx) => d.classList.toggle('active', idx === current));
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => goTo((current - 1 + SLIDE_COUNT) % SLIDE_COUNT));
+    document.getElementById('nextBtn').addEventListener('click', () => goTo((current + 1) % SLIDE_COUNT));
+
+    let autoplay = setInterval(() => goTo((current + 1) % SLIDE_COUNT), 4000);
+    document.getElementById('gallery').addEventListener('mouseenter', () => clearInterval(autoplay));
+    document.getElementById('gallery').addEventListener('mouseleave', () => { autoplay = setInterval(() => goTo((current + 1) % SLIDE_COUNT), 4000); });
+
+    /* ── Scroll Fade-in ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

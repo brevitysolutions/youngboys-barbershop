@@ -384,23 +384,28 @@
       height: 12rem;
       object-fit: cover;
     }
-    .reviews { margin-top: 1.5rem; display: flex; flex-direction: column; gap: .75rem; }
+    .reviews { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
     .review {
       display: flex;
       align-items: flex-start;
-      gap: .5rem;
+      gap: .75rem;
+      padding: 1rem;
+      background: rgba(138,133,120,.06);
+      border-left: 2px solid var(--primary);
     }
     .review svg {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
       color: var(--primary);
       flex-shrink: 0;
-      margin-top: 2px;
+      margin-top: 3px;
     }
     .review p {
-      font-size: .875rem;
+      font-size: 1rem;
       font-style: italic;
-      color: var(--muted);
+      color: var(--fg);
+      line-height: 1.5;
+      opacity: .85;
     }
 
     /* ─── CTA ─── */
@@ -646,7 +651,7 @@
 
   <!-- ═══════ PROMO BANNER (edit text here to update promos) ═══════ -->
   <div class="promo-banner" id="promoBanner">
-    🎓 Student Discount — Show your college ID for $5 off any service!
+    🎓 First time here? Show your student ID for $5 off your first cut!
     <button class="promo-close" id="promoClose" aria-label="Close banner">×</button>
   </div>
 
@@ -682,7 +687,7 @@
       <p class="section-sub">Fades, lineups, designs — see it for yourself</p>
       <div class="gallery" id="gallery">
         <div class="gallery-track" id="galleryTrack">
-          <div class="gallery-slide"><img src="images/10.webp" alt="Skin fade showcase" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/10.jpg" alt="Skin fade showcase" loading="lazy" /></div>
           <div class="gallery-slide"><img src="images/1.jpg" alt="Haircut showcase" loading="lazy" /></div>
           <div class="gallery-slide"><img src="images/2.jpg" alt="Fade lineup" loading="lazy" /></div>
           <div class="gallery-slide"><img src="images/3.jpg" alt="Precision cut" loading="lazy" /></div>
@@ -693,7 +698,7 @@
           <div class="gallery-slide"><img src="images/8.jpg" alt="Clean fade" loading="lazy" /></div>
           <div class="gallery-slide"><img src="images/9.jpg" alt="Line design" loading="lazy" /></div>
           <div class="gallery-slide"><img src="images/13.jpg" alt="Textured cut" loading="lazy" /></div>
-          <div class="gallery-slide"><img src="images/14.jpg" alt="Wave cut" loading="lazy" /></div>
+          <div class="gallery-slide"><img src="images/14.webp" alt="Wave cut" loading="lazy" /></div>
         </div>
         <button class="gallery-btn gallery-btn--prev" id="prevBtn" aria-label="Previous">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
@@ -702,24 +707,6 @@
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
         <div class="gallery-dots" id="galleryDots"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════ SERVICES ═══════ -->
-  <section class="section section--card fade-up">
-    <div class="section-inner">
-      <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.5rem;">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:var(--primary)"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        <h2 class="section-title" style="margin-bottom:0">THE MENU</h2>
-      </div>
-      <p class="section-sub">Every service, every detail — handled</p>
-      <div class="menu-grid" id="menuGrid"></div>
-      <div class="menu-cta">
-        <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary">
-          BOOK NOW
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-        </a>
       </div>
     </div>
   </section>
@@ -760,22 +747,40 @@
           <div class="reviews">
             <div class="review">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <p>"Kevin is the best barber I've ever had. Super clean fade every single time — I won't go anywhere else in Ithaca."</p>
+              <p>"kevin is honestly the best barber in ithaca. super clean fade every time, i won't go anywhere else"</p>
             </div>
             <div class="review">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <p>"Take my son here for all of his haircuts. Kevin is great with kids and the cuts always come out perfect."</p>
+              <p>"Take my son here for all of his haircuts. Kevin is great with kids and always takes his time. Highly recommend."</p>
             </div>
             <div class="review">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <p>"Walked in on a Saturday with no appointment and still got taken care of. Lineup was sharp. Definitely my go-to spot now."</p>
+              <p>"walked in on a saturday no appointment and he still got me in. lineup was crazy sharp. this is the spot fr"</p>
             </div>
             <div class="review">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-              <p>"Been coming here since freshman year. The attention to detail is unmatched — designs, fades, everything is on point."</p>
+              <p>"been coming here since freshman year. the designs are insane and he actually listens to what you want. 10/10"</p>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ SERVICES ═══════ -->
+  <section class="section section--card fade-up">
+    <div class="section-inner">
+      <div style="display:flex;align-items:center;justify-content:center;gap:.75rem;margin-bottom:.5rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:24px;color:var(--primary)"><line x1="12" x2="12" y1="2" y2="22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        <h2 class="section-title" style="margin-bottom:0">THE MENU</h2>
+      </div>
+      <p class="section-sub">Every service, every detail, handled</p>
+      <div class="menu-grid" id="menuGrid"></div>
+      <div class="menu-cta">
+        <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          BOOK NOW
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
   </section>

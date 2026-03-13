@@ -14,6 +14,65 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
 
+  <!-- ═══════ GOOGLE ANALYTICS 4 ═══════ -->
+  <!-- REPLACE G-KG00WB0PBZ with your actual GA4 Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KG00WB0PBZ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-KG00WB0PBZ');
+  </script>
+
+  <!-- ═══════ LOCAL BUSINESS SCHEMA (JSON-LD) ═══════ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BarberShop",
+    "name": "Young Boys Barbershop",
+    "image": "https://youngboysbarbershop.shop/images/Chairs.webp",
+    "url": "https://youngboysbarbershop.shop",
+    "@id": "https://youngboysbarbershop.shop/#barbershop",
+    "telephone": "+16073796028",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "111 Dryden Rd, Suite D",
+      "addressLocality": "Ithaca",
+      "addressRegion": "NY",
+      "postalCode": "14850",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 42.4424,
+      "longitude": -76.4855
+    },
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday"], "opens": "09:00", "closes": "18:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:00", "closes": "18:30"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "09:00", "closes": "19:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:30", "closes": "16:30"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/youngboys_barbershop_1/"
+    ],
+    "priceRange": "$$",
+    "currenciesAccepted": "USD",
+    "paymentAccepted": "Cash, Credit Card",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Barbershop Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Basic Haircut", "description": "Basic haircut with minimal shear and trimmer work"}, "price": "30.00", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Skin Fade", "description": "Any kind of skin fade — high, medium, low, or tapered"}, "price": "35.00", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Luxury Haircut", "description": "Cut of your choice + 2 add-ons"}, "price": "60.00", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Kids Haircut", "description": "Basic kids cut or kids skin fade (10 & under)"}, "price": "25.00", "priceCurrency": "USD"},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Beard & Mustache Trim", "description": "Precision trim with professional-grade razor blade"}, "price": "20.00", "priceCurrency": "USD"}
+      ]
+    }
+  }
+  </script>
+
   <style>
     :root {
       --bg: #0e0e0e;
@@ -385,6 +444,79 @@
     footer a:hover { color: var(--primary); }
     footer svg { width: 16px; height: 16px; }
 
+    /* ─── GOOGLE MAP ─── */
+    .map-embed {
+      width: 100%;
+      height: 14rem;
+      border: none;
+      margin-bottom: 1.5rem;
+      filter: grayscale(.3) contrast(1.05);
+    }
+
+    /* ─── CLICK TO CALL ─── */
+    .call-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      color: var(--primary);
+      font-weight: 500;
+      transition: opacity .2s;
+      margin-bottom: 1rem;
+    }
+    .call-link:hover { opacity: .8; }
+    .call-link svg { width: 16px; height: 16px; }
+
+    /* ─── MOBILE STICKY BAR ─── */
+    .sticky-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--bg-card);
+      border-top: 1px solid var(--border);
+      padding: .75rem 1rem;
+      transform: translateY(100%);
+      transition: transform .3s ease;
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-bar-inner {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    .sticky-bar .btn-primary {
+      flex: 1;
+      justify-content: center;
+      padding: .85rem 1rem;
+      font-size: 1.1rem;
+    }
+    .sticky-bar .btn-call {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--primary);
+      cursor: pointer;
+      transition: border-color .2s;
+      flex-shrink: 0;
+    }
+    .sticky-bar .btn-call:hover { border-color: var(--primary); }
+    .sticky-bar .btn-call svg { width: 20px; height: 20px; }
+
+    @media (max-width: 768px) {
+      .sticky-bar { display: block; }
+      /* Add bottom padding so footer isn't hidden behind sticky bar */
+      footer { padding-bottom: 5rem; }
+    }
+
     /* ─── ANIMATIONS ─── */
     .fade-up {
       opacity: 0;
@@ -490,11 +622,22 @@
             <h2>FIND US</h2>
           </div>
           <address class="address">111 Dryden Rd, Suite D<br>Ithaca, NY 14850</address>
-          <div class="walkins">
+          <a href="tel:+16073796028" class="call-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Tap to Call
+          </a>
+          <div class="walkins">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <span>Walk-ins welcome!</span>
           </div>
-          <img src="images/Chair_haircut.jpg" alt="Inside Young Boys Barbershop" class="interior-img" />
+          <iframe
+            class="map-embed"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2942.8!2d-76.4877!3d42.4424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d0819e5ee0a9a7%3A0x3de2b8fcb7847e0!2s111%20Dryden%20Rd%2C%20Ithaca%2C%20NY%2014850!5e0!3m2!1sen!2sus!4v1"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Young Boys Barbershop location"
+          ></iframe>
           <div class="reviews">
             <div class="review">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
@@ -525,6 +668,19 @@
       </a>
     </div>
   </section>
+
+  <!-- ═══════ MOBILE STICKY BAR ═══════ -->
+  <div class="sticky-bar" id="stickyBar">
+    <div class="sticky-bar-inner">
+      <a href="tel:+16073796028" class="btn-call" aria-label="Call barbershop">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>
+      <a href="https://book.squareup.com/appointments/jr847t2bvgbx3a/location/LTCV9Y4CKBJ7B/services" target="_blank" rel="noopener noreferrer" class="btn-primary book-btn">
+        BOOK NOW
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
 
   <!-- ═══════ FOOTER ═══════ -->
   <footer>
@@ -617,6 +773,46 @@
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    /* ── Mobile Sticky Bar ── */
+    const stickyBar = document.getElementById('stickyBar');
+    let lastScroll = 0;
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      // Show after scrolling past hero
+      if (scrollY > window.innerHeight * 0.6) {
+        stickyBar.classList.add('visible');
+      } else {
+        stickyBar.classList.remove('visible');
+      }
+      lastScroll = scrollY;
+    }, { passive: true });
+
+    /* ── GA4: Track "Book Now" clicks ── */
+    document.querySelectorAll('.book-btn, .btn-primary[href*="squareup"]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'book_now_click', {
+            event_category: 'engagement',
+            event_label: btn.closest('.sticky-bar') ? 'sticky_bar' : 'inline',
+            value: 1
+          });
+        }
+      });
+    });
+
+    /* ── GA4: Track call clicks ── */
+    document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+      link.addEventListener('click', () => {
+        if (typeof gtag === 'function') {
+          gtag('event', 'call_click', {
+            event_category: 'engagement',
+            event_label: 'phone_call',
+            value: 1
+          });
+        }
+      });
+    });
   </script>
 
 </body>

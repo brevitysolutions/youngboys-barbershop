@@ -51,10 +51,8 @@
       "longitude": -76.4855
     },
     "openingHoursSpecification": [
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday"], "opens": "09:00", "closes": "18:00"},
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:00", "closes": "18:30"},
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "09:00", "closes": "19:00"},
-      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:30", "closes": "16:30"}
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Wednesday","Thursday"], "opens": "10:00", "closes": "17:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "19:00"}
     ],
     "sameAs": [
       "https://www.instagram.com/youngboys_barbershop_1/"
@@ -750,6 +748,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             <h2>HOURS</h2>
           </div>
+          <p style="color:var(--muted);font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;margin:0 0 .75rem;">Summer Hours · Jun 1 – Aug 10</p>
           <div id="hoursBlock"></div>
         </div>
         <div>
@@ -869,13 +868,13 @@
     ];
 
     const hours = [
-      { day:"Monday", time:"9:00 AM – 6:00 PM" },
-      { day:"Tuesday", time:"9:00 AM – 6:00 PM" },
-      { day:"Wednesday", time:"9:00 AM – 6:00 PM" },
-      { day:"Thursday", time:"9:00 AM – 6:30 PM" },
-      { day:"Friday", time:"9:00 AM – 7:00 PM" },
-      { day:"Saturday", time:"9:00 AM – 7:00 PM" },
-      { day:"Sunday", time:"10:30 AM – 4:30 PM" },
+      { day:"Monday", time:"10:00 AM – 5:00 PM" },
+      { day:"Tuesday", time:"Closed" },
+      { day:"Wednesday", time:"10:00 AM – 5:00 PM" },
+      { day:"Thursday", time:"10:00 AM – 5:00 PM" },
+      { day:"Friday", time:"10:00 AM – 7:00 PM" },
+      { day:"Saturday", time:"10:00 AM – 7:00 PM" },
+      { day:"Sunday", time:"Closed" },
     ];
 
     /* ── Render Services ── */

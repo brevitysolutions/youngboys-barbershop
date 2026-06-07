@@ -893,13 +893,20 @@
       </div>
     `).join('');
 
-    /* ── Render Hours ── */
-    document.getElementById('hoursBlock').innerHTML = hours.map(h => `
-      <div class="hours-row">
-        <span class="hours-day">${h.day}</span>
-        <span class="hours-time">${h.time}</span>
-      </div>
-    `).join('');
+    /* ── Render Hours (live from the booking app, with fallback) ── */
+    function renderHours(list) {
+      document.getElementById('hoursBlock').innerHTML = list.map(h => `
+        <div class="hours-row">
+          <span class="hours-day">${h.day}</span>
+          <span class="hours-time">${h.time}</span>
+        </div>
+      `).join('');
+    }
+    renderHours(hours); // fallback first
+    fetch('https://platform-two-blush.vercel.app/api/hours')
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(d => { if (d && Array.isArray(d.hours) && d.hours.length) renderHours(d.hours); })
+      .catch(() => {});
 
     /* ── Footer Year ── */
     document.getElementById('footerYear').textContent = `© ${new Date().getFullYear()} Young Boys Barbershop · Ithaca, NY`;

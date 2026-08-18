@@ -1,30 +1,40 @@
-# Young Boys Barbershop — Website
+# Young Boys Barbershop — marketing site
 
-Static site for Young Boys Barbershop (Ithaca, NY).  
-Built by [Brevity Solutions](https://brevity.solutions).
+Static site for Young Boys Barbershop (Ithaca, NY). No build step, no
+dependencies — one `index.html` plus images, deployed on Vercel.
 
-## Setup
+- **Live:** https://youngboys-barbershop.vercel.app
+- **Booking app (separate repo):** https://github.com/brevitysolutions/youngboys-platform
+- **Built by** [Brevity Solutions](https://brevity.solutions)
 
-### 1. Add images
-Drop the following `.webp` files into the `images/` folder:
+## The go-live switch
 
-- `real-shop.webp` — storefront / hero background
-- `real-interior.webp` — interior shot
-- `real-cut1.webp` through `real-cut8.webp` — gallery haircut photos
+Near the top of `index.html`:
 
-### 2. Deploy to Vercel
-This repo auto-deploys on push. No build step required — it's a static site.
+    const BOOKING_URL = null;   // null = Square Appointments; set to the app URL to cut over
 
-### 3. Custom domain
-In the Vercel dashboard → Settings → Domains → add your Namecheap domain.
-Then in Namecheap, set the nameservers or CNAME to point to Vercel.
+All four "Book" CTAs carry a `data-book` attribute and read this one constant.
+While it is `null` they point at the shop's existing Square Appointments page.
+Setting it to the booking app's URL switches all four at once.
 
-## Stack
-- Pure HTML / CSS / JS (zero dependencies, zero build tools)
-- Hosted on Vercel (free tier)
-- Domain via Namecheap
+**The Square links are deliberate until the app goes live — do not "fix" them.**
+
+## What is dynamic
+
+The services menu renders from the booking app's `/api/services`, so prices,
+descriptions and photos Kevin edits in the admin dashboard appear here too
+without a deploy. A hardcoded copy paints first, so the page is never empty.
+
+Shop hours appear in two places and both must stay in step: the visible hours
+block, and the hardcoded JSON-LD `openingHoursSpecification` — the latter is what
+Google actually reads.
+
+## Deploying
+
+Push to `main`; Vercel deploys. No build step. Commits must be authored with a
+GitHub-mapped email or Vercel blocks the deploy.
 
 ## Client
-**Young Boys Barbershop**  
-111 Dryden Rd, Suite D · Ithaca, NY 14850  
+
+**Young Boys Barbershop** — 111 Dryden Rd, Suite D · Ithaca, NY 14850
 Instagram: [@youngboys_barbershop_1](https://www.instagram.com/youngboys_barbershop_1/)
